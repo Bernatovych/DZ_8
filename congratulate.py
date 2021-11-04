@@ -8,7 +8,7 @@ def format_income_string(users):
     return ast.literal_eval(users)
 
 
-def users_list(users):
+def users_dr_list(users):
     users_list = []
     for i in users:
         users_list.append((i['birthday'][5:10], i['name']))
@@ -40,12 +40,12 @@ def congratulate(users_list, week_list):
 if __name__ == "__main__":
     try:
         users = format_income_string(sys.argv[1])
-        users_list = users_list(users)
+        users_list = users_dr_list(users)
         week_list = week_days_list()
         log = congratulate(users_list, week_list)
         for k, v in log.items():
             print(k + ':', ', '.join(v))
     except SyntaxError:
-        print('Проверьте правильность написания списка!')
+        print('Список должен быть обернут в кавычки!')
 
 #"[{'name': 'Bill', 'birthday': '1983-10-23'}, {'name': 'Kim', 'birthday': '1983-10-25'}, {'name': 'Bob', 'birthday': '1987-10-24'}]"
